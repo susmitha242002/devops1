@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms20cs001-nginx-deployment
+  namespace:ms20cs001
+  labels:
+    app: ms20cs001-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ms20cs001-nginx
+  template:
+    metadata:
+      labels:
+        app: ms20cs001-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
